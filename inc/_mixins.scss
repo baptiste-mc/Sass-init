@@ -1,0 +1,74 @@
+/*==============================
+=            Mixins            =
+==============================*/
+
+// Media Queries
+
+// Internet Explorer
+@mixin ie() {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	    @content;
+	}
+}
+
+@mixin media($point) {
+
+    // Breakpoints
+    $largedesktop: "only screen and (max-width: 1450px)";
+    $desktop: "only screen and (max-width: 1200px)";
+    $tablette: "only screen and (max-width: 1024px)";
+    $mobile: "only screen and (max-width: 768px)";
+    $mobilePetit: "only screen and (max-width: 480px)";
+    $mobileTresPetit: "only screen and (max-width: 370px)";
+
+
+
+    @if $point==largedesktop {
+        @media #{$largedesktop} {
+            @content;
+        }
+    }
+
+    @else if $point==desktop {
+        @media #{$desktop} {
+            @content;
+        }
+    }
+
+    @else if $point==tablette {
+        @media #{$tablette} {
+            @content;
+        }
+    }
+
+    @else if $point==mobile {
+        @media #{$mobile} {
+            @content;
+        }
+    }
+
+    @else if $point==mobilePetit {
+        @media #{$mobilePetit} {
+            @content;
+        }
+    }
+
+    @else if $point==mobileTresPetit {
+        @media #{$mobileTresPetit} {
+            @content;
+        }
+    }
+
+    @else {
+        @media only screen and (max-width: $point+'px') {
+            @content;
+        }
+    }
+
+
+}
+
+// Calcul des tailles
+@function size($value) {
+    @return ($value / $defaultFontSize) * 1em;
+}
