@@ -72,3 +72,19 @@
 @function size($value) {
     @return ($value / $defaultFontSize) * 1em;
 }
+
+// Application rapide des font, size, line-height, et letter-spacing
+@mixin setFont($font, $size, $line-height : null, $letter-spacing : null) {
+  @if $font {
+    font-family: $font;
+  }
+  @if $size {
+    font-size: size($size);
+  }
+  @if $line-height {
+    line-height: $line-height * 1px;
+  }
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing * 1px;
+  }
+}
